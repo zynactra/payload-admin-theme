@@ -1,0 +1,139 @@
+/* Zynactra admin theme for Payload. Every colour, font and radius comes from the --zt-*
+   variables set by the plugin; Payload's own styles live in @layer payload-default, so these
+   unlayered rules take precedence. Tested with Payload 3.93. */
+
+@font-face {
+  font-family: 'Instrument Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('./fonts/instrument-sans-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Instrument Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('./fonts/instrument-sans-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Payload's gray scale, rebuilt from two colours. Payload flips it for dark mode itself. */
+:root {
+  --color-base-0: var(--zt-canvas);
+  --color-base-50: color-mix(in oklab, var(--zt-ink) 5%, var(--zt-canvas));
+  --color-base-100: color-mix(in oklab, var(--zt-ink) 10%, var(--zt-canvas));
+  --color-base-150: color-mix(in oklab, var(--zt-ink) 15%, var(--zt-canvas));
+  --color-base-200: color-mix(in oklab, var(--zt-ink) 20%, var(--zt-canvas));
+  --color-base-250: color-mix(in oklab, var(--zt-ink) 25%, var(--zt-canvas));
+  --color-base-300: color-mix(in oklab, var(--zt-ink) 30%, var(--zt-canvas));
+  --color-base-350: color-mix(in oklab, var(--zt-ink) 35%, var(--zt-canvas));
+  --color-base-400: color-mix(in oklab, var(--zt-ink) 40%, var(--zt-canvas));
+  --color-base-450: color-mix(in oklab, var(--zt-ink) 45%, var(--zt-canvas));
+  --color-base-500: color-mix(in oklab, var(--zt-ink) 50%, var(--zt-canvas));
+  --color-base-550: color-mix(in oklab, var(--zt-ink) 55%, var(--zt-canvas));
+  --color-base-600: color-mix(in oklab, var(--zt-ink) 60%, var(--zt-canvas));
+  --color-base-650: color-mix(in oklab, var(--zt-ink) 65%, var(--zt-canvas));
+  --color-base-700: color-mix(in oklab, var(--zt-ink) 70%, var(--zt-canvas));
+  --color-base-750: color-mix(in oklab, var(--zt-ink) 75%, var(--zt-canvas));
+  --color-base-800: color-mix(in oklab, var(--zt-ink) 80%, var(--zt-canvas));
+  --color-base-850: color-mix(in oklab, var(--zt-ink) 85%, var(--zt-canvas));
+  --color-base-900: color-mix(in oklab, var(--zt-ink) 90%, var(--zt-canvas));
+  --color-base-950: color-mix(in oklab, var(--zt-ink) 95%, var(--zt-canvas));
+  --color-base-1000: var(--zt-ink);
+  --font-body: var(--zt-font);
+  --style-radius-s: var(--zt-radius-s);
+  --style-radius-m: var(--zt-radius-m);
+  --style-radius-l: var(--zt-radius-l);
+}
+
+/* Buttons: accent-filled and outline (pills by default, as on zynactra.com) */
+.btn--style-primary,
+.btn--style-secondary {
+  border-radius: var(--zt-radius-button);
+}
+.btn--style-primary:not(.btn--disabled) {
+  --color: var(--zt-on-accent);
+  --hover-color: var(--zt-on-accent);
+  --bg-color: transparent;
+  --hover-bg: transparent;
+  background-image: var(--zt-accent);
+  transition: opacity 0.15s;
+}
+.btn--style-primary:not(.btn--disabled):hover {
+  opacity: 0.9;
+}
+.btn--style-secondary:not(.btn--disabled) {
+  --btn-border: 1px solid var(--theme-elevation-1000);
+  --hover-btn-border: 1px solid var(--theme-elevation-1000);
+  --hover-bg: var(--theme-elevation-1000);
+  --hover-color: var(--theme-elevation-0);
+}
+
+/* Cards: white with a hairline and a faint shadow */
+.card {
+  background: var(--theme-elevation-0);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+}
+
+/* Login and other minimal screens: a soft glow of the accent behind the form */
+.template-minimal {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.template-minimal::before {
+  content: '';
+  position: absolute;
+  inset: 20% 15%;
+  z-index: -1;
+  border-radius: 50%;
+  background: var(--zt-accent);
+  filter: blur(120px);
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+/* Brand graphics */
+.zt-wordmark {
+  font-family: var(--zt-font);
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--theme-elevation-1000);
+}
+.zt-dot {
+  background: var(--zt-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.zt-logo {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 240px;
+  max-height: 120px;
+}
+/* The nav icon slot is a small square (18px; 16px on phones): fill it. */
+.zt-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.zt-monogram {
+  display: inline-grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 28%;
+  background: var(--zt-accent);
+  color: var(--zt-on-accent);
+  font-family: var(--zt-font);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
