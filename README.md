@@ -4,11 +4,13 @@ Zynactra's theme for the [Payload CMS](https://payloadcms.com) admin panel. By d
 
 ## Install
 
-Projects install it straight from a Git tag (the repo is public, so no tokens are needed, locally or on App Platform):
+Projects install a release tag straight from GitHub. The repo is public, so no tokens or SSH keys are needed, locally or on App Platform:
 
 ```bash
-pnpm add github:Zynactra/payload-admin-theme#v0.1.0
+pnpm add @zynactra/payload-admin-theme@https://codeload.github.com/Zynactra/payload-admin-theme/tar.gz/refs/tags/v0.1.0
 ```
+
+(Use this HTTPS tarball form rather than `github:Zynactra/...`: pnpm may record the shorthand as `git+ssh`, which fails in CI and on hosting platforms without an SSH key.)
 
 ```ts
 // payload.config.ts
@@ -84,6 +86,6 @@ To release: bump `version` in `package.json`, run `pnpm build`, commit (includin
 git tag v0.2.0 && git push && git push --tags
 ```
 
-Projects upgrade by changing the tag in their `package.json`. CI fails if `dist/` doesn't match `src/`.
+Projects upgrade by changing the tag at the end of the URL in their `package.json`, then `pnpm install`. CI fails if `dist/` doesn't match `src/`.
 
 Instrument Sans is licensed under the SIL Open Font License ([`src/fonts/OFL.txt`](src/fonts/OFL.txt)).
