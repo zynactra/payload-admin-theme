@@ -83,7 +83,7 @@ pnpm test
 To release: bump `version` in `package.json`, run `pnpm build`, commit (including `dist/`), then tag and push:
 
 ```bash
-git tag v0.2.0 && git push && git push --tags
+git tag -a v0.2.0 -m v0.2.0 && git push && git push --tags
 ```
 
 Projects upgrade by changing the tag at the end of the URL in their `package.json`, then `pnpm install`. CI fails if `dist/` doesn't match `src/`.
