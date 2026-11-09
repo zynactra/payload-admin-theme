@@ -7,10 +7,10 @@ Zynactra's theme for the [Payload CMS](https://payloadcms.com) admin panel. By d
 Projects install a release tag straight from GitHub. The repo is public, so no tokens or SSH keys are needed, locally or on App Platform:
 
 ```bash
-pnpm add @zynactra/payload-admin-theme@https://codeload.github.com/Zynactra/payload-admin-theme/tar.gz/refs/tags/v0.1.0
+pnpm add @zynactra/payload-admin-theme@https://codeload.github.com/zynactra/payload-admin-theme/tar.gz/refs/tags/v0.1.0
 ```
 
-(Use this HTTPS tarball form rather than `github:Zynactra/...`: pnpm may record the shorthand as `git+ssh`, which fails in CI and on hosting platforms without an SSH key.)
+(Use this HTTPS tarball form rather than `github:zynactra/...`: pnpm may record the shorthand as `git+ssh`, which fails in CI and on hosting platforms without an SSH key.)
 
 ```ts
 // payload.config.ts
